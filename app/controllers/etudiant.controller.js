@@ -1,3 +1,4 @@
+const etudiantModel = require("../models/etudiant.model.js");
 const Etudiant = require("../models/etudiant.model.js");
 
 
@@ -5,7 +6,7 @@ const Etudiant = require("../models/etudiant.model.js");
 // Create and Save a new Etudiant
 exports.create = (req, res) => {
 
-  const newEtudiant = new App({
+  const newEtudiant = new Etudiant({
     nom : req.body.nom,
     prenom : req.body.prenom,
     matricule : req.body.matricule,
@@ -28,7 +29,7 @@ exports.create = (req, res) => {
 
 // Retrieve all etudiants from the database.
 exports.findAll = (req, res) => {
-    
+
     Etudiant.find()
       .then((data) => {
         res.send(data);
