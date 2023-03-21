@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Server is running :D" });
 });
 
-let PORT = 8080;
+let PORT = 8082;
 require('./app/routes/app.routes.js')(app);
 
 app.listen(PORT, () => {
