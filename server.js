@@ -1,7 +1,7 @@
 const express = require("express");
+const cors = require('cors');
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
 
 
 
@@ -21,6 +21,11 @@ mongoose.connect("mongodb+srv://nestjs-admin:Ip92JYUImuDTCiZI@cluster0.9zkvy.mon
   });
 
 const app = express();
+
+app.use(cors({
+    origin: '*',
+     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
