@@ -109,4 +109,9 @@ exports.delete = (req, res) => {
 };
 
 
+// Update a Tutorial by the id in the request
+exports.update = (req, res) => {
+  
+};
+
 

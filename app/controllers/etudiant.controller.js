@@ -42,4 +42,25 @@ exports.findAll = (req, res) => {
       });
   };
 
-
+  exports.delete = (req, res) => {
+    const id = req.params.id;
+    Etudiant.findByIdAndRemove(id)
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          statut:'echec',
+          message: `Cannot delete etudiant with id=${id}`
+        });
+      } else {
+        res.send({
+          statut:'succes',
+          message: "Etudiant was deleted successfully!"
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Etudiant with id=" + id
+      });
+    });
+  }
