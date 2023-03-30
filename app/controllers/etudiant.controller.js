@@ -64,3 +64,26 @@ exports.findAll = (req, res) => {
       });
     });
   }
+
+  exports.update = (req, res) => {
+    const id = req.params.id;
+    if (!req.body) {
+      return res.status(400).send({
+        message: "Data to update can not be empty!"
+      });
+    }
+
+    Etudiant.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot update Etudiant with id=${id}. Maybe Etudiant was not found!`
+        });
+      } else res.send({ message: "Etudiant was updated successfully." });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating Etudiant with id=" + id
+      });
+    });
+  }
