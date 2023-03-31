@@ -79,7 +79,7 @@ exports.findAll = (req, res) => {
         res.status(404).send({
           message: `Cannot update Etudiant with id=${id}. Maybe Etudiant was not found!`
         });
-      } else res.send({ message: "Etudiant was updated successfully." });
+      } else res.send({ message: "Etudiant was updated successfully.",payload:req.body });
     })
     .catch(err => {
       res.status(500).send({
